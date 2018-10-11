@@ -3,6 +3,8 @@ Create shortcuts for games/applications that will run them through Locale Emulat
 
 Written in PowerShell
 
+![alt text](https://raw.githubusercontent.com/Svinto/LEShortcutCreator/master/screenshot.png)
+
 ## Usage Instructions
 Either launch the script normally to get a Graphical User Interface.
 The interface will let you create shortcuts that uses Locale
