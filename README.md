@@ -1,7 +1,7 @@
 # LEShortcutCreator
 Create shortcuts for games/applications that will run them through Locale Emulator
 
-Written in PowerShell
+Written in PowerShell. Should be compatible with Windows 7, Windows 8.1, and Windows 10.
 
 ![alt text](https://raw.githubusercontent.com/Svinto/LEShortcutCreator/master/screenshot.png)
 
