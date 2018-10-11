@@ -1,8 +1,9 @@
 # LEShortcutCreator
 Create shortcuts for games/applications that will run them through Locale Emulator
 
-## Usage Instructions
+Written in PowerShell
 
+## Usage Instructions
 Either launch the script normally to get a Graphical User Interface.
 The interface will let you create shortcuts that uses Locale
 Emulator.
@@ -14,7 +15,6 @@ file.
 
 
 ## Locale Emulator
-
 A software that can run applications (that has no Unicode support)
 with a different locale than the systems default.
 Usually used to run Japanese Games on non-Japanese versions of
@@ -25,13 +25,11 @@ URL: https://pooi.moe/Locale-Emulator/
 
 
 ## This Script
-
 Creates shortcut files for applications that will run them through
 Locale Emulator.
 
 
 ## Why?
-
 Shortcut files created by Locale Emulator each requires their own
 config file. This config file is created simultaneously and stored
 in the targeted applications install directory.
