@@ -8,7 +8,7 @@ Written in PowerShell. Should be compatible with Windows 7, Windows 8.1, and Win
 ## Usage Instructions
 Either launch the script normally to get a Graphical User Interface.
 The interface will let you create shortcuts that uses Locale
-Emulator.
+Emulator. Supports file drag'n'drop.
 
 OR drag'n'drop files onto the script file to create shortcut files
 automatically without any graphical interface interaction. These
