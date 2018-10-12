@@ -5,6 +5,11 @@ Written in PowerShell. Should be compatible with Windows 7, Windows 8.1, and Win
 
 ![alt text](https://raw.githubusercontent.com/Svinto/LEShortcutCreator/master/screenshot.png)
 
+## Install Instructions
+Just download the file `LEShortcutCreator.cmd` and run it.
+
+If Locale Emulator is installed it will autodetect its location. Alternatively it can autodetect an uninstalled Locale Emulator if `LEShortcutCreator.cmd` is placed in the same directory.
+
 ## Usage Instructions
 Either launch the script normally to get a Graphical User Interface.
 The interface will let you create shortcuts that uses Locale
