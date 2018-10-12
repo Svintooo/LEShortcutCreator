@@ -5,6 +5,12 @@ Written in PowerShell. Should be compatible with Windows 7, Windows 8.1, and Win
 
 ![alt text](https://raw.githubusercontent.com/Svinto/LEShortcutCreator/master/screenshot.png)
 
+## Features
+- File drag'n'drop: Drop files on the user interface.
+- Bacth mode: Add multiple files at once and create shortcut files for all of them.
+- Non-GUI mode: Give the script a list of files as parameters and shortcut files will be created without any user interaction.
+- Config file: Can remember last used settings between executions.
+
 ## Install Instructions
 Just download the file `LEShortcutCreator.cmd` and place it anywhere.
 
