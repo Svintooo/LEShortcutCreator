@@ -10,6 +10,7 @@ Written in PowerShell. Should be compatible with Windows 7, Windows 8.1, and Win
 - Bacth mode: Add multiple files at once and create shortcut files for all of them.
 - Non-GUI mode: Give the script a list of files as parameters and shortcut files will be created without any user interaction.
 - Config file: Can remember last used settings between executions.
+- Launcher: Can be used to directly launch applications through Locale Emulator without creating a shortcut file first.
 
 ## Install Instructions
 Just download the file `LEShortcutCreator.cmd` and place it anywhere.
@@ -50,7 +51,3 @@ in the targeted applications install directory.
 This script creates shortcut files that can use Locale Emulator
 without these extra config files. They instead uses Locale Emulator's
 global config file inside Locale Emulator's install directory.
-
-The script can also be used as a launcher for Locale Emulator.
-Applications can be launched directly from the Graphical User
-Interface.
