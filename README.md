@@ -27,7 +27,7 @@ with a different locale than the systems default.
 Usually used to run Japanese Games on non-Japanese versions of
 Windows.
 
-Exellent software, highly recommended.
+Excellent software, highly recommended.
 URL: https://pooi.moe/Locale-Emulator/
 
 
