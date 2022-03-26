@@ -267,7 +267,6 @@ function Verify-LEDirectory([String]$Directory) {
 
   if (-Not $dir_exists) { return $False }
   if (-Not (Test-Path -LiteralPath (Join-Path -Path $Directory -ChildPath $Files.LE.Runner))) { return $False }
-  if (-Not (Test-Path -LiteralPath (Join-Path -Path $Directory -ChildPath $Files.LE.Config))) { return $False }
 
   return $True
 }
@@ -313,12 +312,17 @@ function Get-LEDirectories {
 
 # Returns a list of the profiles in Locale Emulator's config file.
 function Get-LELanguages([String]$Directory) {
-  [XML]$Config = Get-Content (Join-Path -Path $Directory -ChildPath $Files.LE.Config)
-
   # ArrayList is used instead of Powershell arrays because:
   # - Faster when changing the number of elements in the array.
   # - required when used with ComboBoxes in Windows Forms.
   $Languages = New-Object System.Collections.ArrayList
+
+  [XML]$Config = try {
+    Get-Content (Join-Path -Path $Directory -ChildPath $Files.LE.Config)
+  } catch {
+    # Return empty language list if the LE config file doesn't exist
+    return ,$Languages
+  }
 
   if ($Config.LEConfig.Profiles.Profile -Is [Xml.XmlLinkedNode]) {
     # Only one <Profile> element in XML document
@@ -876,13 +880,10 @@ function GUI-Update-Languages {
     $Language = $Lang_ComboBox.DataSource | Where { $_.Name -Eq $current_selection_name } | Select -First 1
     if ($Language) { $Lang_ComboBox.SelectedItem = $Language }
   }
-
-  $Lang_Button_Edit.Enabled = Test-Path -LiteralPath (Join-Path $LELocation_TextBox.Text $Files.LE.Editor)
 }
 
 function GUI-Disable-Languages {
-  $Lang_ComboBox.Enabled    = $False
-  $Lang_Button_Edit.Enabled = $False
+  $Lang_ComboBox.Enabled = $False
 }
 
 function Save-ConfigFile {
@@ -1090,10 +1091,12 @@ $LELocation_TextBox.Add_TextChanged({
   if ($path_is_valid) {
     $LELocation_TextBox.Valid     = $True
     $LELocation_TextBox.BackColor = $TextBoxColors.None
+    $Lang_Button_Edit.Enabled     = Test-Path -LiteralPath (Join-Path $LELocation_TextBox.Text $Files.LE.Editor)
     GUI-Update-LE
   } else {
     $LELocation_TextBox.Valid     = $False
     $LELocation_TextBox.BackColor = $TextBoxColors.Invalid
+    $Lang_Button_Edit.Enabled     = $False
     GUI-Disable-LE
   }
 })
