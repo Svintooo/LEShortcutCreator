@@ -1,9 +1,10 @@
 # LE Shortcut Creator
 Create shortcuts for games/applications that will run them through Locale Emulator.
 
-Written in PowerShell. Should be compatible with Windows 7, Windows 8.1, and Windows 10.
+Written in PowerShell (don't let the \*.cmd extention fool you).  
+Compatible with Windows 7, Windows 8.1, Windows 10, and Windows 11.
 
-![alt text](https://raw.githubusercontent.com/Svinto/LEShortcutCreator/master/screenshot.png)
+<p align="center"><img src="screenshot-win7.png?raw=true" alt="Windows 7" width="49%" /><img src="screenshot-win81.png?raw=true" alt="Windows 8.1" width="49%" /><img src="screenshot-win10.png?raw=true" alt="Windows 10" width="49%" /><img src="screenshot-win11.png?raw=true" alt="Windows 11" width="49%" /></p>
 
 ## Features
 - File drag'n'drop: Drop files on the user interface.
@@ -13,25 +14,26 @@ Written in PowerShell. Should be compatible with Windows 7, Windows 8.1, and Win
 - Launcher: Can be used to directly launch applications through Locale Emulator without creating a shortcut file first.
 
 ## Install Instructions
-Just download the file `LEShortcutCreator.cmd` and place it anywhere.
+Download `LEShortcutCreator.cmd` from the [releases page](https://github.com/Svintooo/LEShortcutCreator/releases).
 
-If Locale Emulator is installed it will autodetect its location. Alternatively it can autodetect an uninstalled Locale Emulator if `LEShortcutCreator.cmd` is placed in the same directory.
+If Locale Emulator is installed it will autodetect its location. Alternatively
+it can autodetect an uninstalled Locale Emulator if `LEShortcutCreator.cmd` is
+placed in the same directory.
 
 ## Usage Instructions
-Either launch the script normally to get a Graphical User Interface.
-The interface will let you create shortcuts that uses Locale
-Emulator. Supports file drag'n'drop.
+Either double click `LEShortcutCreator.cmd` to get a Graphical User Interface.
+The interface will let you create shortcuts that uses Locale Emulator.
+Also supports file drag'n'drop.
 
-OR drag'n'drop files onto the script file to create shortcut files
-automatically without any graphical interface interaction. These
-shortcut files will be created in the same directory as the script
-file.
+OR drag'n'drop files onto the `LEShortcutCreator.cmd` file directly to create
+shortcut files automatically without any graphical interface interaction. These
+shortcut files will be created in the same directory as the script file.
 
 
 ## Locale Emulator
 A software that can run applications (that has no Unicode support)
 with a different locale than the systems default.
-Usually used to run Japanese Games on non-Japanese versions of
+It is usually used to run Japanese Games on non-Japanese versions of
 Windows.
 
 Excellent software, highly recommended.
@@ -44,10 +46,31 @@ Locale Emulator.
 
 
 ## Why?
-Shortcut files created by Locale Emulator each requires their own
+Shortcut files created by Locale Emulator itself each require their own
 config file. This config file is created simultaneously and stored
 in the targeted applications install directory.
 
 This script creates shortcut files that can use Locale Emulator
 without these extra config files. They instead uses Locale Emulator's
-global config file inside Locale Emulator's install directory.
+global config file inside Locale Emulator's install directory (`LEConfig.xml`).
+
+
+## PowerShell in a \*.cmd file?
+Yes. The script has a header written in BATCH, but everything else in the file is PowerShell code.  
+The only thing the BATCH code does is to execute the rest of the file as a PowerShell script.
+
+I want the script to be executed by double clicking it.  
+PowerShell files (\*.ps1) does not allow double clicking for security reasons.  
+But BATCH files (\*.bat, \*.cmd) does not have this restriction.  
+So by wrapping the PowerShell code in a BATCH script I circumvent this restriction.
+
+
+## Common Problems
+**Q:** No languages are listed in the dropdown menu.  
+**A:** Click the "Edit List" button. This will start the Locale Emulator GUI.
+Just close this GUI (you do not need to use it).
+The default languages should now show up in the dropdown menu.
+
+**Q:** The "Locale Emulator location" text field is automatically filled on start. But the text field is pink, and the "Edit List" button is greyed out.  
+**A:** This happens if Locale Emulator was once installed, and later the Locale Emulator files were moved/deleted without uninstalling it first.  
+To fix this, either reinstall Locale Emulator, or put the `LEShortcutCreator.cmd` file in the same directory as Locale Emulator.
