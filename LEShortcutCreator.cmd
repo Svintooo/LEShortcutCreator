@@ -497,6 +497,7 @@ $Target_TextBox                  = New-Object System.Windows.Forms.TextBox
 $Target_TextBox.Multiline        = $False
 $Target_TextBox.Width            = $browse_textbox_width
 $Target_TextBox.Height           = $browse_textbox_height
+$Target_TextBox.AutoSize         = $False #Win11
 $Target_TextBox.Location         = New-Object System.Drawing.Point(11,24)
 Add-Member -InputObject $Target_TextBox -MemberType "NoteProperty" -Name "Targets" -Value @()
 # Note that the initial directory fallback below is modified during execution
@@ -520,6 +521,7 @@ $Args_TextBox                    = New-Object System.Windows.Forms.TextBox
 $Args_TextBox.Multiline          = $False
 $Args_TextBox.Width              = $browse_textbox_width + $browse_buttons_width
 $Args_TextBox.Height             = $browse_textbox_height
+$Args_TextBox.AutoSize           = $False #Win11
 $Args_TextBox.Location           = New-Object System.Drawing.Point(11,78)
 
 $Lang_Groupbox                   = New-Object System.Windows.Forms.Groupbox
@@ -561,6 +563,7 @@ $SaveDir_TextBox                 = New-Object System.Windows.Forms.TextBox
 $SaveDir_TextBox.Multiline       = $False
 $SaveDir_TextBox.Width           = $browse_textbox_width
 $SaveDir_TextBox.Height          = $browse_textbox_height
+$SaveDir_TextBox.AutoSize        = $False #Win11
 $SaveDir_TextBox.Location        = New-Object System.Drawing.Point(11,242)
 $SaveDir_TextBox.text            = [Environment]::GetFolderPath("Desktop")
 Add-Member -InputObject $SaveDir_TextBox -MemberType "NoteProperty" -Name "TextWas" -Value $SaveDir_TextBox.text
@@ -582,6 +585,7 @@ $LELocation_TextBox              = New-Object System.Windows.Forms.TextBox
 $LELocation_TextBox.Multiline    = $False
 $LELocation_TextBox.Width        = $browse_textbox_width
 $LELocation_TextBox.Height       = $browse_textbox_height
+$LELocation_TextBox.AutoSize     = $False #Win11
 $LELocation_TextBox.BackColor    = $TextBoxColors.Invalid
 $LELocation_TextBox.Location     = New-Object System.Drawing.Point(11,294)
 Add-Member -InputObject $LELocation_TextBox -MemberType "NoteProperty" -Name "TextWas"  -Value ""
