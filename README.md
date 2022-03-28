@@ -8,7 +8,7 @@ Compatible with Windows 7, Windows 8.1, Windows 10, and Windows 11.
 
 ## Features
 - File drag'n'drop: Drop files on the user interface.
-- Bacth mode: Add multiple files at once and create shortcut files for all of them.
+- Batch mode: Add multiple files at once and create shortcut files for all of them.
 - Non-GUI mode: Give the script a list of files as parameters and shortcut files will be created without any user interaction.
 - Config file: Can remember last used settings between executions.
 - Launcher: Can be used to directly launch applications through Locale Emulator without creating a shortcut file first.
