@@ -18,13 +18,20 @@
 @echo off
 setlocal
 
-:: Test if powershell can be found
-:: Verifies that the PowerShell command works before continuing.
+:: Test if PowerShell can be found
+:: Verify that the PowerShell command works before continuing.
+SET PowerShell_default_location=%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe
 where /Q PowerShell
-if not %ERRORLEVEL% == 0 (
-  Rem mshta javascript:alert^("ERROR: PowerShell not found in PATH."^);close^(^);
-  mshta vbscript:Execute^("msgbox ""PowerShell not found in PATH."",0,""ERROR"":close"^)
-  EXIT /B
+if %ERRORLEVEL% == 0 (
+  FOR /f "delims=" %%F IN ('where PowerShell') DO (SET PowerShell=%%F)
+) else (
+  if exist "%PowerShell_default_location%" (
+    SET PowerShell=%PowerShell_default_location%
+  ) else (
+    REM mshta javascript:alert^("ERROR: PowerShell not found."^);close^(^);
+    mshta vbscript:Execute^("msgbox ""PowerShell not found."",0,""ERROR"":close"^)
+    EXIT /B
+  )
 )
 
 :: Run :: Execute this file directly as a PowerShell script
@@ -32,14 +39,14 @@ if not %ERRORLEVEL% == 0 (
 set POWERSHELL_BAT_ARGS=%0 %*
 if defined POWERSHELL_BAT_ARGS set POWERSHELL_BAT_ARGS=%POWERSHELL_BAT_ARGS:"=\"%
 if defined POWERSHELL_BAT_ARGS set POWERSHELL_BAT_ARGS=%POWERSHELL_BAT_ARGS:$=`$%
-PowerShell -Sta -NoProfile -ExecutionPolicy Bypass -WindowStyle hidden -Command Invoke-Expression $('$args=@(^&{$args} %POWERSHELL_BAT_ARGS%);'+[String]::Join([char]10,$(Get-Content '%~f0')))
+"%PowerShell%" -Sta -NoProfile -ExecutionPolicy Bypass -WindowStyle hidden -Command Invoke-Expression $('$args=@(^&{$args} %POWERSHELL_BAT_ARGS%);'+[String]::Join([char]10,$(Get-Content '%~f0')))
 EXIT /B
 
 :: Run DEBUG :: Execute a temporary copy of this file with a *.ps1 extension
 :: By running a real *.ps1 file errors messages gets easier to understand.
 set TMPFILE=%~d0%~p0%~n0.debug.ps1
 COPY "%~f0" "%TMPFILE%" >NUL
-PowerShell -Sta -NoProfile -ExecutionPolicy Bypass -File "%TMPFILE%" %*
+"%PowerShell%" -Sta -NoProfile -ExecutionPolicy Bypass -File "%TMPFILE%" %*
 DEL "%TMPFILE%" >NUL
 PAUSE
 EXIT /B
