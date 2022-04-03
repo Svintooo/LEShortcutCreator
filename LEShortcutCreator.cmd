@@ -6,6 +6,9 @@
    : - https://stackoverflow.com/questions/29645/#8597794
    : - https://stackoverflow.com/questions/9074476/#9074483
    :
+   : Batch code explained:
+   : setlocal   New variables only exists for this script, and do not affect Windows.
+   :
    : PowerShell arguments explained:
    : -Sta                     Enables support for file drag'n'drop in Windows forms.
    : -NoProfile               Makes sure no PowerShell settings disrupts script execution.
@@ -14,6 +17,15 @@
 
 @echo off
 setlocal
+
+:: Test if powershell can be found
+:: Verifies that the PowerShell command works before continuing.
+where /Q PowerShell
+if not %ERRORLEVEL% == 0 (
+  Rem mshta javascript:alert^("ERROR: PowerShell not found in PATH."^);close^(^);
+  mshta vbscript:Execute^("msgbox ""PowerShell not found in PATH."",0,""ERROR"":close"^)
+  EXIT /B
+)
 
 :: Run :: Execute this file directly as a PowerShell script
 :: No temporary files needed, but errors messages is harder to understand.
