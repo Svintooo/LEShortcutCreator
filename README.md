@@ -20,8 +20,10 @@ If Locale Emulator is installed it will autodetect its location. Alternatively
 it can autodetect an uninstalled Locale Emulator if `LEShortcutCreator.cmd` is
 placed in the same directory.
 
+**IMPORTANT:** Make sure to at least once run `LEInstaller.exe` from Locale Emulator (even if you do not want to have it installed). This creates some necessary dll-files that Locale Emulator needs to function.
+
 ## Usage Instructions
-Either double click `LEShortcutCreator.cmd` to get a Graphical User Interface.
+Either double click `LEShortcutCreator.cmd` to get a Graphical User Interface.  
 The interface will let you create shortcuts that uses Locale Emulator.
 Also supports file drag'n'drop.
 
@@ -32,7 +34,7 @@ shortcut files will be created in the same directory as the script file.
 
 ## Locale Emulator
 A software that can run applications (that has no Unicode support)
-with a different locale than the systems default.
+with a different locale than the systems default.  
 It is usually used to run Japanese Games on non-Japanese versions of
 Windows.
 
@@ -66,11 +68,16 @@ So by wrapping the PowerShell code in a BATCH script I circumvent this restricti
 
 
 ## Common Problems
-**Q:** No languages are listed in the dropdown menu.  
-**A:** Click the "Edit List" button. This will start the Locale Emulator GUI.
-Just close this GUI (you do not need to use it).
-The default languages should now show up in the dropdown menu.
+**Problem:** The "Locale Emulator location" text field is automatically filled on start. But the text field is pink, and the "Edit List" button is greyed out.  
+**Solution:** Either reinstall Locale Emulator (run `LEInstaller.exe`), or put the `LEShortcutCreator.cmd` file in the same directory as Locale Emulator.  
+**Reason:** This happens if Locale Emulator was once installed, and later the Locale Emulator files were moved/deleted without uninstalling it first.
 
-**Q:** The "Locale Emulator location" text field is automatically filled on start. But the text field is pink, and the "Edit List" button is greyed out.  
-**A:** This happens if Locale Emulator was once installed, and later the Locale Emulator files were moved/deleted without uninstalling it first.  
-To fix this, either reinstall Locale Emulator, or put the `LEShortcutCreator.cmd` file in the same directory as Locale Emulator.
+**Problem:** No languages are listed in the dropdown menu.  
+**Solution:** Click the "Edit List" button. This will start the Locale Emulator GUI.  
+Just close this GUI (you do not need to use it).  
+The default languages should now show up in the dropdown menu.  
+**Reason:** The Locale Emulator file `LEConfig.xml` has been deleted. Running the GUI will recreate it with the default languages.
+
+**Problem:** Clicking the "Edit List" button gives a weird error message "Could not load file or assembly..."  
+**Solution:** Just run and immediately close `LEInstaller.exe` from Locale Emulator folder (you do not need to perform the actual install).  
+**Reason:** Locale Emulator needs some dll-files to function that is not included in the download. Instead, these dll-files are created when running `LEInstaller.exe` for the first time.
