@@ -68,16 +68,17 @@ So by wrapping the PowerShell code in a BATCH script I circumvent this restricti
 
 
 ## Common Problems
-**Problem:** The "Locale Emulator location" text field is automatically filled on start. But the text field is pink, and the "Edit List" button is greyed out.  
-**Solution:** Either reinstall Locale Emulator (run `LEInstaller.exe`), or put the `LEShortcutCreator.cmd` file in the same directory as Locale Emulator.  
-**Reason:** This happens if Locale Emulator was once installed, and later the Locale Emulator files were moved/deleted without uninstalling it first.
 
-**Problem:** No languages are listed in the dropdown menu.  
+### The "Locale Emulator location" text field is automatically filled on start. But the text field is pink, and the "Edit List" button is greyed out
+**Solution:** Either reinstall Locale Emulator (run `LEInstaller.exe`), or put the `LEShortcutCreator.cmd` file in the same directory as Locale Emulator.  
+**Reason:** This can happen if Locale Emulator was once installed, and later the Locale Emulator files were moved/deleted without uninstalling it first. The path to Locale Emulator then still exists in the Windows Registry, which is read by LE Shortcut Creator.
+
+### No languages are listed in the dropdown menu
 **Solution:** Click the "Edit List" button. This will start the Locale Emulator GUI.  
 Just close this GUI (you do not need to use it).  
 The default languages should now show up in the dropdown menu.  
-**Reason:** The Locale Emulator file `LEConfig.xml` has been deleted. Running the GUI will recreate it with the default languages.
+**Reason:** The Locale Emulator file `LEConfig.xml` is not included in the download. But a default config is created after running the GUI the first time.
 
-**Problem:** Clicking the "Edit List" button gives a weird error message "Could not load file or assembly..."  
+### Clicking the "Edit List" button gives a weird error message "Could not load file or assembly..."
 **Solution:** Just run and immediately close `LEInstaller.exe` from Locale Emulator folder (you do not need to perform the actual install).  
 **Reason:** Locale Emulator needs some dll-files to function that is not included in the download. Instead, these dll-files are created when running `LEInstaller.exe` for the first time.
