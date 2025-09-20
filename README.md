@@ -39,7 +39,7 @@ It is usually used to run Japanese Games on non-Japanese versions of
 Windows.
 
 Excellent software, highly recommended.
-URL: https://pooi.moe/Locale-Emulator/
+URL: https://github.com/xupefei/Locale-Emulator
 
 
 ## This Script
